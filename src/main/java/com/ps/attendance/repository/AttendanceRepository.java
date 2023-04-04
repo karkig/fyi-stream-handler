@@ -1,19 +1,17 @@
 package com.ps.attendance.repository;
 
-import com.ps.attendance.dao.UserDailyAttendanceStatus;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.ps.attendance.dao.UserDailyAttendanceResult;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 
 @Repository
-public interface AttendanceRepository extends CrudRepository<UserDailyAttendanceStatus, Integer> {
+public interface AttendanceRepository extends CrudRepository<UserDailyAttendanceResult, Integer> {
 
-    //select max(out_time) , min(in_time) ,date ,user_id from user_attendance where date='2023-04-03' group by user_id
-
-    @Query(value = "SELECT MAX(out_time) as outTime, MIN(in_time) as inTime, date, user_id FROM user_attendance WHERE date = :date group by user_id", nativeQuery = true)
-    public Iterable<Object[]> calculateTotalHours(Date date);
+    @Query(value = "SELECT no_of_hours, date, user_id FROM user_attendance_result WHERE date = :date and user_id =:user_id", nativeQuery = true)
+    public List<Object[]> findByUserIdAndDate(Date date, String user_id);
 
 }
