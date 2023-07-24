@@ -16,3 +16,9 @@ spring:
 server:
   port: 9003
 
+eureka:
+  instance:
+    hostname: discovery-server
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8762/eureka/
