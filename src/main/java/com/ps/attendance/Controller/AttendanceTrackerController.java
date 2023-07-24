@@ -2,6 +2,7 @@ package com.ps.attendance.Controller;
 
 import com.ps.attendance.service.AttendanceTrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,10 @@ public class AttendanceTrackerController {
     AttendanceTrackerService attendanceTrackerService;
 
     @GetMapping(value = "/user-attendance")
-    public String  getTotalHours(@RequestParam("userId") String userId) {
-        return attendanceTrackerService.calculateTotalHours(userId);
+    public ResponseEntity<String> getTotalHours(@RequestParam("userId") String userId) {
+        return ResponseEntity.ok()
+                .body(attendanceTrackerService.calculateTotalHours(userId));
+
+
     }
 }

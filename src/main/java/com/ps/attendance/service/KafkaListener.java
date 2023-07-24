@@ -7,6 +7,8 @@ import com.ps.attendance.repository.AttendanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class KafkaListener {
     @Autowired

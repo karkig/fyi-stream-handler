@@ -17,14 +17,7 @@ public class AttendanceTrackerServiceImpl implements AttendanceTrackerService {
     @Override
     public String calculateTotalHours(String userId) {
 
-        List<Object[]> status = attendanceRepository.findByUserIdAndDate(Utils.getCurrentDate(), userId);
-        for (Object[] row : status) {
-            if ((Integer) row[0] < 4) {
-                return "Absent";
-            } else if ((Integer) row[0] > 4 && (Integer) row[0] < 8) {
-                return "Half-Day";
-            }
-        }
+
         return "Present";
     }
 

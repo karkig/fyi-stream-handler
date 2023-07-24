@@ -1,21 +1,19 @@
 package com.ps.attendance.dao;
 
-import javax.persistence.*;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 
-@Entity
-@Table(name = "user_attendance_result")
+
 public class UserDailyAttendanceResult {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
 
     private String userId;
 
     private Integer noOfHours;
 
-    @Temporal(TemporalType.DATE)
-    private Date date;
+
 
     public Integer getId() {
         return id;
@@ -41,11 +39,4 @@ public class UserDailyAttendanceResult {
         this.noOfHours = time;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }
